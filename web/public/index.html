@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="z2Z8Fq6SeeWH2Msqmhwh2t">
+<head data-page-node-id="8CG1IeNAt2HMtMKdN2EGan">
+  <meta charset="UTF-8" data-page-node-id="M7BXpTRkTw7s0TD5v3Ctvb" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="UbelkSoz2rWysqYESs4YzV" />
+  <title>待办清单 · Todo List</title>
+  <link rel="stylesheet" href="/style.css" />
+  <script defer src="/order.js"></script>
+  <script defer src="/app.js"></script>
+</head>
+<body data-page-node-id="vYRSLa7uBhuR4CrRlucbsi">
+  <main class="app" id="app" data-page-node-id="5sfMIurNct1h6IIgdYvw9I">
+    <!-- 未登录：登录 / 注册视图 -->
+    <section id="authView" class="auth-view">
+      <header class="auth-hero" data-page-node-id="UsmP6I6GZScRSDBFn8ZyDq">
+        <h1 data-page-node-id="UmRIYtZZ1AOmsQ4YjZsv8U">📝 待办清单</h1>
+        <p class="auth-sub" data-page-node-id="jR0V2U9geYSjAJQy2fwkPl">登录后即可同步你的任务</p>
+      </header>
+
+      <div class="auth-card" data-page-node-id="lhCaqBasFetljGtQvzzXIJ">
+        <div class="auth-tabs" data-page-node-id="Zt2g7FMSDomDGiKbP0nRzr">
+          <button class="auth-tab active" data-tab="login" data-page-node-id="3tgVpSfufFCSGxxieIn0OQ">登录</button>
+          <button class="auth-tab" data-tab="register" data-page-node-id="LuPCedIeqgMXxmsG0aAXtP">注册</button>
+        </div>
+
+        <form id="loginForm" class="auth-form" autocomplete="on" data-page-node-id="5YF96btNWDu725cCMFeoXO">
+          <label data-page-node-id="WeYjyBOmd8pD44rbR7AtlL">用户名
+            <input name="username" required autocomplete="username" data-page-node-id="REzmC2s5iOgQYFGXfRMgJe" />
+          </label>
+          <label data-page-node-id="L8GCtvuUi5lZjoldWbQoAO">密码
+            <input name="password" type="password" required autocomplete="current-password" data-page-node-id="4RjOAmq41N1XmiY5Mc581X" />
+          </label>
+          <button type="submit" class="primary" data-page-node-id="TdHfonoQWs4buEZpRCXh4t">登录</button>
+          <p class="auth-msg" id="loginMsg" data-page-node-id="5BTy1bnc08yCQ0UAkXxRvh"></p>
+        </form>
+
+        <form id="registerForm" class="auth-form" hidden autocomplete="on" data-page-node-id="zq2QKl4U0gyxZEytgvPjgx">
+          <label data-page-node-id="HHYWn3lPz0G9RCCo6fNCGj">用户名
+            <input name="username" required autocomplete="username"
+                   placeholder="3-20 位字母/数字/下划线/连字符" data-page-node-id="VjTFKn3g8wCa7gFt4WZUes" />
+          </label>
+          <label data-page-node-id="c1EmjwhaJB9BT0uIu3fUsI">密码
+            <input name="password" type="password" required autocomplete="new-password"
+                   placeholder="至少 6 位" data-page-node-id="CiSBW3lGnTkHDiyuiRWQfo" />
+          </label>
+          <button type="submit" class="primary" data-page-node-id="jiXSBkDeWVIyVJlQCVn5MB">注册并登录</button>
+          <p class="auth-msg" id="registerMsg" data-page-node-id="dv3FpJxm2hAzEI2Hyn6FKW"></p>
+        </form>
+      </div>
+
+      <p class="auth-hint" data-page-node-id="63pIyt39ywJvyknRnBXS9R">登录后，cookie 会保留 30 天，下次访问自动进入你的账户。</p>
+    </section>
+
+    <!-- 已登录：主视图 -->
+    <section id="mainView" hidden data-page-node-id="S86T817DeiqYxmQAB2YDYU">
+      <header data-page-node-id="SoCMWXX7tLsAFkIV3G1wqK">
+        <div data-page-node-id="5a8GwnxPbn2Kl2zz9cduMk">
+          <h1 data-page-node-id="BzYfZGhkeEfuYvteHRGItr">📝 待办清单</h1>
+          <div class="date" id="dateLabel" data-page-node-id="3XlJR5aAu4AUoeR594vcWC"></div>
+        </div>
+        <div class="user-box" data-page-node-id="OzqGZYrp2oSsAMiCtFWKz0">
+          <span class="hello" data-page-node-id="ieWDb7ny1zM4JRzwgFElVt">👋 <b id="meName" data-page-node-id="6wG6Bf0SCUEEHEhbFrnY7G"></b></span>
+          <button id="logoutBtn" class="ghost" data-page-node-id="yXTkHm2nMTLw9T3j9BeZve">退出</button>
+        </div>
+      </header>
+
+      <div class="add-bar" data-page-node-id="EsJA0yX00eCf3D3uvveSq6">
+        <input id="todoText" type="text" placeholder="添加新任务…" maxlength="200" autocomplete="off" data-page-node-id="SVRROMYSPkYIRpM7lfpBwr" />
+        <input id="todoDue" type="date" title="截止日期（可选）" data-page-node-id="G9gq2JWhU2QNTXtem0wpGJ" />
+        <button id="addBtn" class="primary" data-page-node-id="AVBR1GJK5fyOMmVosJ6zJe">添加</button>
+      </div>
+
+      <div class="filters" data-page-node-id="SnGoAjcCGqncZfCP0Je91C">
+        <button data-filter="all" class="active" data-page-node-id="HOXYHHp8vLoNoAi5rGy7Sh">全部</button>
+        <button data-filter="active" data-page-node-id="gkysQqFP4FyNSAEGb8vY2E">待完成</button>
+        <button data-filter="done" data-page-node-id="MBAAZHnKvZwqt0082rrgG4">已完成</button>
+        <span class="filter-sep" data-page-node-id="kmRTeXymfH9zyjKBu5gxef"></span>
+        <button data-sort="manual" class="sort active" title="按拖拽顺序" data-page-node-id="IADv6QxrItGuUGajUbf51O">⇅ 拖拽顺序</button>
+        <button data-sort="due" class="sort" title="按截止日期升序" data-page-node-id="npp1wWEslGVIEjAsXpBQBU">⏰ 截止日期</button>
+        <button data-sort="created" class="sort" title="按创建时间倒序" data-page-node-id="QivJwHMUsdAfvyzzMWcvGl">🕒 创建时间</button>
+      </div>
+
+      <ul class="todo-list" id="todoList" data-page-node-id="DLXxY3dKJKljpb5DVnK6dg"></ul>
+
+      <footer data-page-node-id="krVR46yUphZafrcMdg7AkY">
+        <span id="counter" data-page-node-id="X7yVPWcmmvujQlJP4zFVDW">0 项待完成 · 共 0 项</span>
+        <button id="clearDone" class="ghost" disabled data-page-node-id="U81QoAR7HU4Q2AZadSPH6k">清除已完成</button>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>

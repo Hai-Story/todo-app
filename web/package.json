@@ -1,0 +1,19 @@
+{
+  "name": "todo-app",
+  "version": "3.0.0",
+  "description": "带用户系统的待办清单（Web）",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.1"
+  }
+}
